@@ -1,14 +1,24 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.title {
+  font-size: 0.847rem;
+  font-family: 'Roboto', sans-serif;
+}
 
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content:center;
+  justify-content:flex-end;
+  text-align: right;
+}
+
+header {
+  display: flex;
 }
 
 nav li {
@@ -18,9 +28,11 @@ nav li {
 nav a {
   text-decoration:none;
   color:#78350F;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   padding: .25em 0; 
 }
 .container {
@@ -28,16 +40,29 @@ nav a {
   max-width: 900px;
   margin: 0 auto;
 }
-.title{
-  grid-column:1/-1;
-  text-align: center;
-}
+
 .container {
   display: grid;
-    grid-template-columns: 1fr;
-  
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "recent recent"
+      "article article"
+      "read-more read-more"
+      "footer footer";
+    
 }
-
+.hero-image{
+  grid-area: recent;
+}
+.article-list{
+  grid-area: article;
+}
+.view-more{
+  grid-area:read-more;
+}
+.footer{
+  grid-area:footer;
+}
 img {
   max-width:100%;
   display: block;
@@ -49,7 +74,8 @@ img {
   grid-gap: 0 1em;
   grid-template-areas: 
       "image image"
-      "title date"
+      "date ."
+      "title ."
       "body body"
       "read-more .";
 }
@@ -60,7 +86,7 @@ img {
 .article-read-more { grid-area: read-more }
 .article-date { 
   grid-area: date; 
-  justify-self: end;
+  justify-self: start;
 }
 
 .article-date,
@@ -69,9 +95,45 @@ img {
 }
 
 .hero-image{
+  display: flex;
+  flex-direction:column;
+  justify-content:flex-end;
   background-image: url(/images/hero-image.jpg);
  margin-bottom: 2em;
+ font-family: 'IBM Plex Sans', sans-serif;
  background-size: cover;
-  color:bisque;
+  color:white;
   margin-bottom: 2em;
+  min-height:400px;
+}
+
+.post-date{
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+font-family: 'IBM Plex Sans', sans-serif;
+font-size: 0.75rem;
+font-style: normal;
+font-weight: 400;
+padding-bottom:0;
+margin-bottom: 0;
+
+}
+p {
+  margin: 0;
+  padding-top:1rem;
+  padding-bottom:1rem;
+}
+.hero-title{
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.article-title{
+  padding:0;
+  margin:0;
+}
+
+footer p {
+  text-align: center;
 }
