@@ -37,56 +37,20 @@ nav a {
 }
 .container {
   width: 90%;
-  max-width: 900px;
   margin: 0 auto;
 }
 
 .container {
   display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "recent recent"
-      "article article"
-      "read-more read-more"
-      "footer footer";
-    
-}
-.hero-image{
-  grid-area: recent;
-}
-.article-list{
-  grid-area: article;
-}
-.view-more{
-  grid-area:read-more;
-}
-.footer{
-  grid-area:footer;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
 }
 img {
   max-width:100%;
-  display: block;
 }
 .recent-article{
   margin-bottom: 2em;
-  display: grid;
-  grid-template-columns: 1fr min-content;
-  grid-gap: 0 1em;
-  grid-template-areas: 
-      "image image"
-      "date ."
-      "title ."
-      "body body"
-      "read-more .";
-}
-
-.article-image     { grid-area: image }
-.article-title     { grid-area: title }
-.article-body      { grid-area: body }
-.article-read-more { grid-area: read-more }
-.article-date { 
-  grid-area: date; 
-  justify-self: start;
+  padding: 1em;
 }
 
 .article-date,
@@ -95,9 +59,7 @@ img {
 }
 
 .hero-image{
-  display: flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  grid-column: 1 / -1;
   background-image: url(/images/hero-image.jpg);
  margin-bottom: 2em;
  font-family: 'IBM Plex Sans', sans-serif;
@@ -106,7 +68,12 @@ img {
   margin-bottom: 2em;
   min-height:400px;
 }
-
+.single-blog{
+  grid-column:1/-1;
+}
+.profile-image{
+  width: 80%;
+}
 .post-date{
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 font-family: 'IBM Plex Sans', sans-serif;
@@ -116,6 +83,28 @@ font-weight: 400;
 padding-bottom:0;
 margin-bottom: 0;
 
+}
+.view-more{
+  grid-column: 1 / -1;
+}
+
+
+@media (max-width: 675px) {
+  .container{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+}
+
+
+.view-button{
+  width: 100%;
+  border: none;
+  background-color: #F59E0B;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
 }
 p {
   margin: 0;
@@ -134,6 +123,7 @@ p {
   margin:0;
 }
 
-footer p {
+footer{
+  grid-column: 1 / -1;
   text-align: center;
 }
